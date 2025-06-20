@@ -1,0 +1,15 @@
+# Dockerfile-frontend
+
+FROM nginx:alpine
+
+# Remove default nginx static files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy React build to Nginx
+COPY build/ /usr/share/nginx/html/
+
+# Expose Nginx port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
